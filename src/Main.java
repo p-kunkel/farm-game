@@ -1,5 +1,10 @@
 public class Main {
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
+
+
+
+        Game game = new Game(1);
+
+        game.Start();
     }
 }
