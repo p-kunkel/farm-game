@@ -13,7 +13,8 @@ public class Console {
         return value; 
     }
 
-    public static void ProcessAnyKey(String message) {
+    public static void PressAnyKey(String message) {
+        System.out.println(message);
         ReadValue();
         Clear();
     }

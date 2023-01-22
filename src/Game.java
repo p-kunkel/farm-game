@@ -4,7 +4,7 @@ import java.util.List;
 public class Game {
     Integer Week;
     Boolean BreakLoop;
-    List<User> Users;
+    private List<User> Users;
 
 
     public Game(Integer week) {
@@ -34,6 +34,15 @@ public class Game {
 
                 while (this.BreakLoop == false) {
                     for (User user : this.Users) {
+                        if (user.GetFarm() == null) {
+                            user.SetFarm(new Farm(String.format("Farma '%s'", user.Name)));
+                            user.GetFarm().AddBuilding(new Building("test","stodoła",200,40000.0));
+                            user.GetFarm().AddBuilding(new Building("test 2","obora",200,40000.0));
+
+                            user.GetFarm().AddFarmland(new Farmland(10000));
+                            user.GetFarm().AddFarmland(new Farmland(20000));
+                        }
+
                         System.out.printf("Tydzień nr %d \n",this.Week);
                         user.ManageFarm();
                     }

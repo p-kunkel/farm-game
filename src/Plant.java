@@ -21,6 +21,7 @@ public class Plant {
     }
 
     
-
-    
+    public String toString() {
+        return String.format("%-10s", this.Name);
+    }
 }

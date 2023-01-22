@@ -13,6 +13,10 @@ public class User {
         this.Farm = farm;
     }
 
+    public Farm GetFarm() {
+        return this.Farm;
+    }
+
     public void ManageFarm() {
         Boolean BreakLoop = false;
         String choice;
@@ -29,24 +33,24 @@ public class User {
             Console.Clear();
             switch (choice) {
                 case "1":
-                System.out.println("Twoje budynki:");
+                this.Farm.ViewBuildings();
 
-                Console.ProcessAnyKey("Naciśnij dowolny klawisz, aby przejść dalej :)");
+                Console.PressAnyKey("Naciśnij dowolny klawisz, aby przejść dalej :)");
                 break;
                 case "2":
-                System.out.println("Twoje pola:");
+                this.Farm.ViewFarmlands();
 
-                Console.ProcessAnyKey("Naciśnij dowolny klawisz, aby przejść dalej :)");
+                Console.PressAnyKey("Naciśnij dowolny klawisz, aby przejść dalej :)");
                 break;
                 case "3":
                 System.out.println("Twoje zapasy:");
 
-                Console.ProcessAnyKey("Naciśnij dowolny klawisz, aby przejść dalej :)");
+                Console.PressAnyKey("Naciśnij dowolny klawisz, aby przejść dalej :)");
                 break;
                 case "4":
                 System.out.println("Sklep:");
 
-                Console.ProcessAnyKey("Naciśnij dowolny klawisz, aby przejść dalej :)");
+                Console.PressAnyKey("Naciśnij dowolny klawisz, aby przejść dalej :)");
                 break;
                 case "5":
                 BreakLoop = true;
