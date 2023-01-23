@@ -21,6 +21,10 @@ public class Farmland {
         return String.format("%-15s | %s", String.format("%d ha", this.Area) , plant);
     }
 
+    public Plant getPlant() {
+        return this.Plant;
+    }
+
     public void SetPlant(Plant plant) throws CustomException {
         if (plant == null) {
             throw new CustomException("Niestety, z pustego to i Salomon nie naleje.");
@@ -41,6 +45,7 @@ public class Farmland {
         }
         
         yields = this.Plant.GetYields();
+        this.Plant = null;
         return yields*this.Area;
     }
 
@@ -73,7 +78,6 @@ public class Farmland {
                 catch (CustomException ex) {
                     Console.PressAnyKey(ex.toString());
                 }
-                
                 break;
                 
                 case "2":
@@ -100,8 +104,6 @@ public class Farmland {
                     Console.PressAnyKey(ex.toString());
                     break;
                 }
-
-                this.Plant.AddWeekOfLife();
                 break;
 
                 case "0":

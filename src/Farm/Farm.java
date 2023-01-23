@@ -8,6 +8,7 @@ import Console.Console;
 import Exception.CustomException;
 import Farm.Breeding.Building;
 import Farm.Cultivation.Farmland;
+import Farm.Cultivation.Plant;
 import User.User;
 
 public class Farm {
@@ -140,6 +141,19 @@ public class Farm {
                     Console.PressAnyKey(ex.toString());
                     break;
                 }
+            }
+        }
+    }
+
+    public void SimulateWeeklyProgress() {
+        for (Building building : Buildings) {
+            
+        }
+
+        for (Farmland farmland : Farmlands) {
+            Plant plant = farmland.getPlant();
+            if (plant != null) {
+                plant.AddWeekOfLife();
             }
         }
     }
