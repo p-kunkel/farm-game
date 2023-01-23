@@ -1,12 +1,16 @@
+package User;
+
+import Console.Console;
+import Farm.Farm;
+
 public class User {
-    String Name;
-    Double Cash;
+    public String Name;
+    public Double Cash;
     
     private Farm Farm;
 
-
     public User() {
-
+        this.Cash = 10000.0;
     }
 
     public void SetFarm(Farm farm) {
@@ -33,32 +37,30 @@ public class User {
             Console.Clear();
             switch (choice) {
                 case "1":
-                this.Farm.ViewBuildings();
-
-                Console.PressAnyKey("Naciśnij dowolny klawisz, aby przejść dalej :)");
+                this.Farm.ManageBuildings();
                 break;
+
                 case "2":
-                this.Farm.ViewFarmlands();
-
-                Console.PressAnyKey("Naciśnij dowolny klawisz, aby przejść dalej :)");
+                this.Farm.ManageFarmlands(this);
                 break;
+
                 case "3":
-                System.out.println("Twoje zapasy:");
-
-                Console.PressAnyKey("Naciśnij dowolny klawisz, aby przejść dalej :)");
+                System.out.println("Twoje zapasy:\n");
+                this.Farm.ViewYields();
+                Console.PressAnyKey("Wróć");
                 break;
+
                 case "4":
                 System.out.println("Sklep:");
-
                 Console.PressAnyKey("Naciśnij dowolny klawisz, aby przejść dalej :)");
                 break;
+
                 case "5":
                 BreakLoop = true;
                 break;
+                
                 default:
-                System.out.println("Podano nieprawidłową wartość!");
-                Console.ReadValue();
-                Console.Clear();
+                Console.PressAnyKey("Podano nieprawidłową wartość!");
                 break;
             }
         }
