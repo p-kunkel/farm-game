@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Console.Console;
+import Exception.CustomException;
 import User.User;
 
 public class Building implements Cloneable  {
@@ -53,6 +54,16 @@ public class Building implements Cloneable  {
             System.out.printf("%-7s | %-10s\n", String.format("%d.", position), animal);
             position ++;
         }
+    }
+
+    public void Buy(User user) throws CustomException {
+        if (user.Cash < this.BuyPrice) {
+            throw new CustomException("Nie posiadasz wystarczająco dużo pieniędzy.");
+        }
+
+        user.Cash = user.Cash-this.BuyPrice;
+        user.GetFarm().AddBuilding(this);
+        Console.PressAnyKey(String.format("Kupiono %s za %.2f zł na koncie zostało %.2f zł", this.Type, this.BuyPrice, user.Cash));
     }
 
     public void MenageIt(User user){

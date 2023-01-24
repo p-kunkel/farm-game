@@ -1,6 +1,7 @@
 package Shop;
 
 import Console.Console;
+import Exception.CustomException;
 import Farm.Farm;
 import User.User;
 
@@ -23,29 +24,53 @@ public class Shop {
             System.out.println("0. Wróć");
             System.out.println();
 
-            switch (choice) {
-                case "1":
-                GameData.BuildingsType.ViewBuildingsType();
-                Console.PressAnyKey("");
-                break;
+            try {
+                Integer index;
+                switch (choice) {
+                    case "1":
+                    GameData.BuildingsType.ViewBuildingsType();
+                    choice = Console.ReadValue();
+                    index = Integer.parseInt(choice);
+                    index --;
+                    Console.Clear();
+                    GameData.BuildingsType.GetByIndex(index).Buy(user);
+                    break;
 
-                case "2":
-                GameData.FarmlandsType.ViewFarmlandType();
-                Console.PressAnyKey("");
-                break;
+                    case "2":
+                    GameData.FarmlandsType.ViewFarmlandType();
+                    choice = Console.ReadValue();
+                    index = Integer.parseInt(choice);
+                    index --;
+                    Console.Clear();
+                    GameData.FarmlandsType.GetByIndex(index).Buy(user);
+                    break;
 
-                case "3":
-                GameData.FoodType.ViewFoodType();;
-                Console.PressAnyKey("");
-                break;
+                    case "3":
+                    GameData.FoodType.ViewFoodType();;
+                    choice = Console.ReadValue();
+                    index = Integer.parseInt(choice);
+                    index --;
+                    Console.Clear();
+                    GameData.FoodType.GetByIndex(index).Buy(user);
+                    break;
 
-                case "0":
-                BreakLoop = true;
-                break;
-                
-                default:
+                    case "0":
+                    Console.Clear();
+                    BreakLoop = true;
+                    break;
+                    
+                    default:
+                    Console.PressAnyKey("Podano nieprawidłową wartość!");
+                    break;
+                }
+            }
+            catch (NumberFormatException ex){
+                Console.Clear();
                 Console.PressAnyKey("Podano nieprawidłową wartość!");
-                break;
+            }
+            catch (CustomException ex){
+                Console.Clear();
+                Console.PressAnyKey(ex.toString());
             }
         }
     }

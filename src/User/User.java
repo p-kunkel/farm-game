@@ -11,7 +11,7 @@ public class User {
     private Farm Farm;
 
     public User() {
-        this.Cash = 10000.0;
+        this.Cash = 100000.0;
     }
 
     public void SetFarm(Farm farm) {
@@ -30,9 +30,10 @@ public class User {
             System.out.println("MENU");
             System.out.println("1. Przeglądaj budynki");
             System.out.println("2. Przeglądaj pola");
-            System.out.println("3. Przeglądaj zapasy");
-            System.out.println("4. Idź do sklepu");
-            System.out.println("5. Zakończ bieżącą turę");
+            System.out.println("3. Przeglądaj zapasy ze zbiorów");
+            System.out.println("4. Przeglądaj zapasy jedzenia dla zwierząt");
+            System.out.println("5. Idź do sklepu");
+            System.out.println("6. Zakończ bieżącą turę");
 
             choice = Console.ReadValue();
             Console.Clear();
@@ -46,16 +47,22 @@ public class User {
                 break;
 
                 case "3":
-                System.out.println("Twoje zapasy:\n");
+                System.out.println("Twoje zapasy ze zbiorów:\n");
                 this.Farm.ViewYields();
                 Console.PressAnyKey("Wróć");
                 break;
 
                 case "4":
-                Shop.ViewShopMenu(this);
+                System.out.println("Twoje zapasy jedzenia dla zwierząt:\n");
+                this.Farm.ViewFood();
+                Console.PressAnyKey("Wróć");
                 break;
 
                 case "5":
+                Shop.ViewShopMenu(this);
+                break;
+
+                case "6":
                 BreakLoop = true;
                 break;
                 

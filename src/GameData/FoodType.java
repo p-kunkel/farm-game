@@ -27,7 +27,7 @@ public class FoodType {
         } catch (IndexOutOfBoundsException err) {
             throw new CustomException("Wybrana pozycja nie istnieje!");
         } catch (CloneNotSupportedException e) {
-            throw new CustomException("Wystąpił błąd podczas pobierania rośliny.");
+            throw new CustomException("Wystąpił błąd podczas pobierania jedzenia.");
         }
         return result;
     }

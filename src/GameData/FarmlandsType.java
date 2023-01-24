@@ -11,7 +11,7 @@ public class FarmlandsType {
     private static List<Farmland> FarmlandTypes;
     static {
         List<Farmland> aList = new ArrayList<>();
-        aList.add(new Farmland(1000, 100.0));
+        aList.add(new Farmland(10, 100.0));
 
         FarmlandTypes = aList;
     }

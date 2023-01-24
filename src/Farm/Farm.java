@@ -24,6 +24,7 @@ public class Farm {
         this.Farmlands = new ArrayList<Farmland>();
         this.Buildings = new ArrayList<Building>();
         this.Yields = new TreeMap<>();
+        this.Food = new TreeMap<>();
     }
 
     public void ViewFarmlands() {
@@ -52,6 +53,14 @@ public class Farm {
         this.ViewYields();
     }
 
+    public void AddFood(Food food) {
+        if (this.Food.get(food.GetName()) != null){
+            this.Food.get(food.GetName()).Quantity += food.GetQuantity() ;
+        } else {
+            this.Food.put(food.GetName(), new Food(food.GetName(), food.GetPrice()));
+        }
+    }
+
     public void ViewBuildings() {
         Integer position = 1;
         if (this.Buildings.size() == 0) {
@@ -74,11 +83,35 @@ public class Farm {
             return;
         }
 
+        
         System.out.printf("%-7s | %-20s | %-10s\n", "pozycja", "roślina", "ilość");
         System.out.println(Console.LINE);
 
         for (String key : this.Yields.keySet()) {
             System.out.printf("%-7s | %-20s | %-20s\n", String.format("%d.", position), key, String.format("%d",this.Yields.get(key).Quantity));
+            position ++;
+        }
+    }
+
+    public void ViewFood() {
+        Integer position = 1;
+        if (this.Food.size() == 0) {
+            System.out.println("Nie posiadasz żadnych zapasów jedzenie dla zwierząt");
+            return;
+        }
+
+        System.out.printf("%-7s | %-20s | %-10s\n", "pozycja", "roślina", "ilość");
+        System.out.println(Console.LINE);
+
+        for (String key : this.Yields.keySet()) {
+            if (this.Yields.get(key).IsForAnimal) {
+                System.out.printf("%-7s | %-20s | %-20s\n", String.format("%d.", position), key, String.format("%d",this.Yields.get(key).Quantity));
+                position ++;
+            }
+        }
+
+        for (String key : this.Food.keySet()) {
+            System.out.printf("%-7s | %-20s | %-20s\n", String.format("%d.", position), key, String.format("%d",this.Food.get(key).GetQuantity()));
             position ++;
         }
     }

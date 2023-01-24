@@ -63,6 +63,16 @@ public class Farmland implements Cloneable {
         return  yields;
     }
 
+    public void Buy(User user) throws CustomException {
+        if (user.Cash < this.BuyPrice) {
+            throw new CustomException("Nie posiadasz wystarczająco dużo pieniędzy.");
+        }
+
+        user.Cash = user.Cash-this.BuyPrice;
+        user.GetFarm().AddFarmland(this);
+        Console.PressAnyKey(String.format("Kupiono %s ha zemi za %.2f zł na koncie zostało %.2f zł", this.Area, this.BuyPrice, user.Cash));
+    }
+
     public void MenageIt(User user){
         Boolean BreakLoop = false;
         String choice;
