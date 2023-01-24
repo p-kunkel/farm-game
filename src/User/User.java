@@ -2,6 +2,7 @@ package User;
 
 import Console.Console;
 import Farm.Farm;
+import Shop.Shop;
 
 public class User {
     public String Name;
@@ -37,7 +38,7 @@ public class User {
             Console.Clear();
             switch (choice) {
                 case "1":
-                this.Farm.ManageBuildings();
+                this.Farm.ManageBuildings(this);
                 break;
 
                 case "2":
@@ -51,8 +52,7 @@ public class User {
                 break;
 
                 case "4":
-                System.out.println("Sklep:");
-                Console.PressAnyKey("Naciśnij dowolny klawisz, aby przejść dalej :)");
+                Shop.ViewShopMenu(this);
                 break;
 
                 case "5":

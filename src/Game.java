@@ -42,11 +42,6 @@ public class Game {
                     for (User user : this.Users) {
                         if (user.GetFarm() == null) {
                             user.SetFarm(new Farm(String.format("Farma '%s'", user.Name)));
-                            user.GetFarm().AddBuilding(new Building("test","stodoła",200,40000.0));
-                            user.GetFarm().AddBuilding(new Building("test 2","obora",200,40000.0));
-
-                            user.GetFarm().AddFarmland(new Farmland(1));
-                            user.GetFarm().AddFarmland(new Farmland(2));
                         }
 
                         System.out.printf("Tydzień nr %d \n",this.Week);

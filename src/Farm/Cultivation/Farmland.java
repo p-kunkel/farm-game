@@ -3,14 +3,22 @@ package Farm.Cultivation;
 
 import Console.Console;
 import Exception.CustomException;
+import Farm.Yields;
 import User.User;
 
-public class Farmland {
-    Integer Area;
+public class Farmland implements Cloneable {
+    private Integer Area;
+    private Double BuyPrice;
     private Plant Plant;
 
-    public Farmland(Integer area) {
+    public Farmland(Integer area, Double buyPrice) {
         this.Area = area;
+        this.BuyPrice = buyPrice;
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 
     public String toString() {
@@ -25,6 +33,14 @@ public class Farmland {
         return this.Plant;
     }
 
+    public Double GetPrice() {
+        return this.BuyPrice;
+    }
+
+    public Integer GetArea() {
+        return this.Area;
+    }
+
     public void SetPlant(Plant plant) throws CustomException {
         if (plant == null) {
             throw new CustomException("Niestety, z pustego to i Salomon nie naleje.");
@@ -37,16 +53,14 @@ public class Farmland {
         this.Plant = plant;
     }
 
-    public Integer GetYields() throws CustomException {
-        Integer yields = 0;
-
+    public Yields GetYields() throws CustomException {
         if (this.Plant == null) {
             throw new CustomException("Żeby zebrać plony najpierw musisz coś zasiać");
         }
         
-        yields = this.Plant.GetYields();
+        Yields yields = new Yields(this.Plant.GetName(), this.Plant.GetYields()*this.Area, this.Plant.IsForAnimal);
         this.Plant = null;
-        return yields*this.Area;
+        return  yields;
     }
 
     public void MenageIt(User user){
@@ -72,7 +86,7 @@ public class Farmland {
                 }
 
                 try {
-                    user.GetFarm().AddYelds(this.Plant.GetName(), this.GetYields());
+                    user.GetFarm().AddYelds(this.GetYields());
                     Console.PressAnyKey("");
                 }
                 catch (CustomException ex) {

@@ -14,8 +14,9 @@ public class Plant implements Cloneable {
     private Double ProtectionCost;
     private Double SowingCost;
     private Boolean IsHarvested = false;
+    Boolean IsForAnimal;
 
-    public Plant(String name, Double buyPrice,Double sellPrice,Integer yields, Integer harvestsAfter,Double harvestCost,Double protectionCost,Double sowingCost) {
+    public Plant(String name, Double buyPrice,Double sellPrice,Integer yields, Integer harvestsAfter,Double harvestCost,Double protectionCost,Double sowingCost, Boolean isForAnimal) {
         this.Name = name;
         this.BuyPrice = buyPrice;
         this.Yields = yields;
@@ -24,9 +25,11 @@ public class Plant implements Cloneable {
         this.ProtectionCost = protectionCost;
         this.SowingCost = sowingCost;
         this.IsHarvested = false;
+        this.IsForAnimal = isForAnimal;
         this.WeekOfLife = 0;
     }
 
+    @Override
     public Object clone() throws CloneNotSupportedException {
         return super.clone();
     }
@@ -69,12 +72,12 @@ public class Plant implements Cloneable {
     }
 
     public void Buy(User user, Farmland farmland) throws CustomException {
-        if (user.Cash < this.BuyPrice*farmland.Area) {
+        if (user.Cash < this.BuyPrice*farmland.GetArea()) {
             throw new CustomException("Nie posiadasz wystarczająco dużo pieniędzy.");
         }
 
-        user.Cash = user.Cash-this.BuyPrice*farmland.Area;
+        user.Cash = user.Cash-this.BuyPrice*farmland.GetArea();
         farmland.SetPlant(this);
-        Console.PressAnyKey(String.format("Kupiono %s za %.2f zł na koncie zostało %.2f zł", this.Name, this.BuyPrice*farmland.Area, user.Cash));
+        Console.PressAnyKey(String.format("Kupiono %s za %.2f zł na koncie zostało %.2f zł", this.Name, this.BuyPrice*farmland.GetArea(), user.Cash));
     }
 }

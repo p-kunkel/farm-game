@@ -10,10 +10,10 @@ public class PlantType {
     private static List<Plant> PlantType;
     static {
         List<Plant> aList = new ArrayList<>();
-        aList.add(new Plant("Żyto", 1000.0, 900.0, 10,  1, 100.0, 100.0, 100.0));
-        aList.add(new Plant("Kukurydza", 1000.0, 900.0, 10,  16, 100.0, 100.0, 100.0));
-        aList.add(new Plant("Buraki", 1000.0, 900.0, 10,  16, 100.0, 100.0, 100.0));
-        aList.add(new Plant("Marchewka", 1000.0, 900.0, 10,  16, 100.0, 100.0, 100.0));
+        aList.add(new Plant("Żyto", 1000.0, 900.0, 10,  1, 100.0, 100.0, 100.0, true));
+        aList.add(new Plant("Kukurydza", 1000.0, 900.0, 10,  16, 100.0, 100.0, 100.0, true));
+        aList.add(new Plant("Buraki", 1000.0, 900.0, 10,  16, 100.0, 100.0, 100.0, false));
+        aList.add(new Plant("Marchewka", 1000.0, 900.0, 10,  16, 100.0, 100.0, 100.0, true));
         PlantType = aList;
     }
 
