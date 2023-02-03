@@ -32,4 +32,12 @@ public class Yields implements FoodForAnimal{
 
         this.Quantity -= i;   
     }
+
+    @Override
+    public Boolean CanTakeIt(Integer i) {
+        if (i <= this.Quantity) {
+            return true;
+        }
+        return false;
+    }
 }

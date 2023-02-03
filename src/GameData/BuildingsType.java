@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Exception.CustomException;
+import Farm.Breeding.Animal;
 import Farm.Breeding.Building;
 import Console.Console;
 
@@ -11,11 +12,11 @@ public class BuildingsType {
     private static List<Building> BuildingTypes;
     static {
         List<Building> aList = new ArrayList<>();
-        aList.add(new Building("Obora", "Krowa", 10, 40000.0));
-        aList.add(new Building("Chlewnia", "Świnia", 10, 40000.0));
-        aList.add(new Building("Owczarnia", "Owca", 10, 40000.0));
-        aList.add(new Building("Kurnik", "Kura", 10, 40000.0));
-        aList.add(new Building("Budynek do hodowli psów", "Pies", 10, 40000.0));
+        aList.add(new Building("Obora", Animal.ANIMAL_SPECIES_COW,  40000.0));
+        aList.add(new Building("Chlewnia", Animal.ANIMAL_SPECIES_PIG, 40000.0));
+        aList.add(new Building("Owczarnia", Animal.ANIMAL_SPECIES_SHEEP,  40000.0));
+        aList.add(new Building("Kurnik", Animal.ANIMAL_SPECIES_CHICKEN, 40000.0));
+        aList.add(new Building("Budynek do hodowli psów", Animal.ANIMAL_SPECIES_DOG, 40000.0));
 
         BuildingTypes = aList;
     }

@@ -8,6 +8,7 @@ import Console.Console;
 import Exception.CustomException;
 import Farm.Breeding.Building;
 import Farm.Breeding.Food;
+import Farm.Breeding.FoodForAnimal;
 import Farm.Cultivation.Farmland;
 import Farm.Cultivation.Plant;
 import User.User;
@@ -231,9 +232,24 @@ public class Farm {
         }
     }
 
+    public FoodForAnimal GetFoodForAnimal(String name) {
+        if (Food.get(name) != null) {
+            return Food.get(name);
+        }
+        if (Yields.get(name) != null) {
+            return Yields.get(name);
+        }
+        return null;
+    }
+
     public void SimulateWeeklyProgress() {
+        List<String> aList = new ArrayList<>();
         for (Building building : Buildings) {
-            
+            aList.addAll(building.AddWeekOfLife(this));
+        }
+
+        if (aList.size() > 0) {
+            Console.PressAnyKey(String.join("\n", aList));
         }
 
         for (Farmland farmland : Farmlands) {
@@ -242,5 +258,14 @@ public class Farm {
                 plant.AddWeekOfLife();
             }
         }
+    }
+
+    public Boolean HasBuiding(Building b) {
+        for (Building building : Buildings) {
+            if (b.GetType().equals(building.GetType())) {
+                return true;
+            }
+        }
+        return false;
     }
 }

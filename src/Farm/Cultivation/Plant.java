@@ -5,6 +5,10 @@ import Exception.CustomException;
 import User.User;
 
 public class Plant implements Cloneable {
+    public static final String PLANT_TYPE_RYE = "Żyto";
+    public static final String PLANT_TYPE_CORN = "Kukurydza";
+    public static final String PLANT_TYPE_CARROT = "Marchewka";
+    public static final String PLANT_TYPE_APPLE_TREE = "Jabłoń";
     private String Name;
     private Double BuyPrice;
     private Integer Yields;

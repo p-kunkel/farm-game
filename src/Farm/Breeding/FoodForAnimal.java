@@ -6,4 +6,5 @@ public interface FoodForAnimal {
     public String GetName();
     public Boolean IsForAnimal();
     public void Take(Integer i) throws CustomException; 
+    public Boolean CanTakeIt(Integer i);
 }

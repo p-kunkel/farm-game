@@ -2,9 +2,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Console.Console;
+import Exception.CustomException;
 import Farm.Farm;
-import Farm.Breeding.Building;
-import Farm.Cultivation.Farmland;
 import User.User;
 
 public class Game {
@@ -46,7 +45,10 @@ public class Game {
 
                         System.out.printf("Tydzień nr %d \n",this.Week);
                         user.ManageFarm();
+
+
                         user.GetFarm().SimulateWeeklyProgress();
+
                     }
 
                     this.Week +=1;
