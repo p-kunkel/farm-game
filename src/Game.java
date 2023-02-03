@@ -45,8 +45,6 @@ public class Game {
 
                         System.out.printf("Tydzień nr %d \n",this.Week);
                         user.ManageFarm();
-
-
                         user.GetFarm().SimulateWeeklyProgress();
 
                     }
